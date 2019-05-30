@@ -1,5 +1,5 @@
 import React from 'react';
-import { Menu, Dropdown, Button, Icon, message, Row, Col  } from 'antd';
+import { Menu, Dropdown, Button, Icon, message, Row, Col } from 'antd';
 
 const menu = (
 	<Menu onClick={handleMenuClick}>
@@ -24,15 +24,16 @@ function handleMenuClick(e) {
   console.log('click', e);
 }
 
-
 class HeaderContent extends React.Component{
-
 	render(){
 		return (
-			<Row id="userDrop" type="flex" justify="right">
-				<Dropdown.Button overlay={menu} icon={<Icon type="user" />}>
-				  userName
-				</Dropdown.Button>
+			<Row type="flex" justify="space-between" style={{marginRight:"20px"}}>
+				<Col span={4}></Col>
+				<Col span={4}>
+					<Dropdown.Button overlay={menu} icon={<Icon type="user" />}>
+					  zxyzb
+					</Dropdown.Button>
+				</Col>
 			</Row>
 		)
 	}

@@ -2,6 +2,8 @@ import React from 'react'
 import { Layout, Button, Icon } from 'antd'
 import SiderNav from '../../components/SiderNav'
 import HeaderContent from '../../components/Header'
+import ContentIndex from '../../components/Content'
+import FooterIndex from '../../components/Footer'
 import './index.css'
 
 const {Sider, Header, Content, Footer} = Layout
@@ -28,14 +30,14 @@ class Index extends React.Component{
 					</Sider>
 					
 					<Layout>
-						<Header style={{ position: 'fixed', zIndex: 1, width: '100%',background:'#fff' }}>
+						<Header style={{ position: 'fixed', zIndex: 1, width: '100%',background:'#fff',lineHeight:'64px' }}>
 							<HeaderContent/>
 						</Header>
-						<Content>
-							Content
+						<Content style={{marginTop:'64px'}}>
+							<ContentIndex/>
 						</Content>
 						<Footer>
-							Footer
+							<FooterIndex />
 						</Footer>
 					</Layout>
 				</Layout>
