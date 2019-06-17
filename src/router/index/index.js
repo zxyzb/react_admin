@@ -30,10 +30,10 @@ class Index extends React.Component{
 					</Sider>
 					
 					<Layout>
-						<Header style={{ position: 'fixed', zIndex: 1, width: '100%',background:'#fff',lineHeight:'64px' }}>
+						<Header style={{width: '100%',background:'#fff',lineHeight:'64px' }}>
 							<HeaderContent/>
 						</Header>
-						<Content style={{marginTop:'64px'}}>
+						<Content>
 							<ContentIndex/>
 						</Content>
 						<Footer>

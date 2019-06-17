@@ -1,11 +1,82 @@
 import React from 'react'
 import { Menu, Icon } from 'antd'
+import { Link } from 'react-router-dom'
 const { SubMenu }  = Menu;
+
+const menus = [{
+	title:'图书管理',
+	key:'/book/manager',
+	childen:[
+		{
+			title:'图书列表',
+			key:'/book/list',
+		},{
+			title:'订单管理',
+			key:'/order/list',
+		},{
+			title:'图书上传',
+			key:'/book/upload'
+		}
+	]
+},{
+	title:'物流管理',
+	key:'/goods/control',
+	icon:'',
+	childen:[
+		{
+			title:'物流配置',
+			key:'/goods/settings',
+			icon:'',
+			childen:[
+				{
+					title:'订单地址',
+					key:'/order/address',
+					icon:'',
+				}
+			]
+		},{
+			title:"中转站",
+			key:'/transfer/station',
+			icon:'',
+		}
+	]
+},{
+	title:'系统管理',
+	key:'/sys/control',
+	icon:'',
+},{
+	title:'皮肤管理',
+	key:'/skin/control',
+	icon:'',
+}]
 
 class SiderNav extends React.Component {
   handleClick = e => {
     console.log('click ', e);
   };
+	
+	
+	renderMenuItem = ({key, icon, title,}) => {
+	  return (
+	    <Menu.Item key={key}>
+	      <Link to={key}>
+	        {icon && <Icon type={icon}/>}
+	        <span>{title}</span>
+	      </Link>
+	    </Menu.Item>
+	  )
+	}
+	renderSubMenu = ({key, icon, title, childen}) => {
+	  return (
+	    <Menu.SubMenu key={key} title={<span>{icon && <Icon type={icon}/>}<span>{title}</span></span>}>
+	      {
+	        childen && childen.map(item => {
+	          return item.childen && item.childen.length > 0 ? this.renderSubMenu(item) : this.renderMenuItem(item)
+	        })
+	      }
+	    </Menu.SubMenu>
+	  )
+	}
 
   render() {
     return (
@@ -13,59 +84,16 @@ class SiderNav extends React.Component {
 				<Menu
 				  onClick={this.handleClick}
 				  style={{ width: '100%' }}
-				  defaultSelectedKeys={['1']}
-				  defaultOpenKeys={['sub1']}
+				  defaultSelectedKeys={['/book/manager']}
+				  defaultOpenKeys={['/book/manager']}
 				  mode="inline"
 					theme="dark"
 				>
-				  <SubMenu
-				    key="sub1"
-				    title={
-				      <span>
-				        <Icon type="mail" />
-				        <span>Navigation One</span>
-				      </span>
-				    }
-				  >
-				    <Menu.ItemGroup key="g1" title="Item 1">
-				      <Menu.Item key="1">Option 1</Menu.Item>
-				      <Menu.Item key="2">Option 2</Menu.Item>
-				    </Menu.ItemGroup>
-				    <Menu.ItemGroup key="g2" title="Item 2">
-				      <Menu.Item key="3">Option 3</Menu.Item>
-				      <Menu.Item key="4">Option 4</Menu.Item>
-				    </Menu.ItemGroup>
-				  </SubMenu>
-				  <SubMenu
-				    key="sub2"
-				    title={
-				      <span>
-				        <Icon type="appstore" />
-				        <span>Navigation Two</span>
-				      </span>
-				    }
-				  >
-				    <Menu.Item key="5">Option 5</Menu.Item>
-				    <Menu.Item key="6">Option 6</Menu.Item>
-				    <SubMenu key="sub3" title="Submenu">
-				      <Menu.Item key="7">Option 7</Menu.Item>
-				      <Menu.Item key="8">Option 8</Menu.Item>
-				    </SubMenu>
-				  </SubMenu>
-				  <SubMenu
-				    key="sub4"
-				    title={
-				      <span>
-				        <Icon type="setting" />
-				        <span>Navigation Three</span>
-				      </span>
-				    }
-				  >
-				    <Menu.Item key="9">Option 9</Menu.Item>
-				    <Menu.Item key="10">Option 10</Menu.Item>
-				    <Menu.Item key="11">Option 11</Menu.Item>
-				    <Menu.Item key="12">Option 12</Menu.Item>
-				  </SubMenu>
+					{
+					  menus && menus.map(item => {
+					    return item.childen && item.childen.length > 0 ? this.renderSubMenu(item) : this.renderMenuItem(item)
+					  })
+					}
 				</Menu>
 			</div>
       
