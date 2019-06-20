@@ -1,11 +1,11 @@
 import React from 'react'
 import { Menu, Icon } from 'antd'
 import { Link } from 'react-router-dom'
-const { SubMenu }  = Menu;
 
 const menus = [{
 	title:'图书管理',
 	key:'/book/manager',
+	icon:'appstore',
 	childen:[
 		{
 			title:'图书列表',
@@ -21,7 +21,7 @@ const menus = [{
 },{
 	title:'物流管理',
 	key:'/goods/control',
-	icon:'',
+	icon:'appstore',
 	childen:[
 		{
 			title:'物流配置',
@@ -43,11 +43,11 @@ const menus = [{
 },{
 	title:'系统管理',
 	key:'/sys/control',
-	icon:'',
+	icon:'appstore',
 },{
 	title:'皮肤管理',
 	key:'/skin/control',
-	icon:'',
+	icon:'appstore',
 }]
 
 class SiderNav extends React.Component {

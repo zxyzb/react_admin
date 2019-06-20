@@ -1,5 +1,5 @@
 import React from 'react';
-import { Menu, Dropdown, Button, Icon, message, Row, Col } from 'antd';
+import { Menu, Dropdown, Icon, message, Row, Col } from 'antd';
 import ChangePwdForm from '../ModalForms/changePwd'
 
 function handleMenuClick(e) {

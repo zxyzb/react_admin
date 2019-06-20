@@ -1,16 +1,19 @@
 import React, {Component} from 'react';
-import ReactDOM from 'react-dom';
-import { Route } from 'react-router-dom'
+import { Route, Switch } from 'react-router-dom'
 import Index from './router/index/index.js';
+import Login from './page/login/index.js'
 
 import './App.css';
-import { Button } from 'antd';
 
 
 class App extends Component {
   render() {
+		
     return (
-        <Route path='/' component={Index}/>
+			<Switch>
+				<Route path='/login' component={Login}/>
+				<Route path='/' component={Index}/>
+			</Switch>
     )
   }
 }
